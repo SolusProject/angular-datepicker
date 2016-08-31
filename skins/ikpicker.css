@@ -1,0 +1,294 @@
+.picker-span {
+    color: black;
+    padding: 6px 5px;
+    float: left;
+} 
+
+
+.picker-span-ok { 
+    position: relative;
+    left: calc(-.5em - 2px);
+    width: 100%;
+    line-height: 1.0em;
+    position: relative;
+    top: -.3em;
+    float: left;
+    color: red !important;
+} 
+
+.picker_error_wrapper {
+    min-height: 1.5em;	
+    width: 169px;
+    display: inline-block;
+}
+
+
+
+
+.picker-input:focus {
+ 	float: left;
+    box-shadow:0px 0px 0px 1px solid black;
+  	border-bottom: 2px solid #0CB7F7 !important;
+	outline-color: transparent;
+    outline: none;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.picker-input {
+	float: left;
+    padding: 4px !important;
+	border: none !important;
+	border-bottom: solid 2px #c9c9c9 !important;
+ 	transition: border 0.3s color 1.0s ease-in !important;
+    background: transparent !important;
+} 
+
+.picker-input::-webkit-input-placeholder {
+  font-size: 11px !important;
+  color: black;
+}
+
+
+/*TABLE*/
+.picker-table {
+    width: 180px !important;
+    th,  tr {
+        td {
+            border-bottom: 0px;
+        }
+    }
+    
+}
+
+.datepickerframe table, tr, td, th {
+    height: 2.5em !important;
+}
+
+.picker-td {
+    border: 1px solid white !important; 
+    width: 2.2em !important;
+}
+
+
+
+
+/* FIRST HEADER */
+.picker-header1 {
+    background: #d3d3d3;   
+    border: 1px solid #d3d3d3 !important;
+}
+.picker-center-header {
+    text-align: center;
+}
+
+/*select box*/
+.picker-select {
+    border: transparent;
+    background: transparent;
+    outline-color: transparent;
+    outline: none;
+   	color : black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/*makes both select appear on the same line*/
+.picker-table select {
+    padding-bottom: 0 !important;
+    display: inline; 
+}
+
+.picker-button {
+	border: transparent;
+    background: transparent;
+    outline-color: transparent;
+    outline: none;
+    color : white;
+}
+
+
+
+
+
+/* SECOND HEADER */
+.picker-header {
+	text-align: center;
+    background: white;
+    border: 1px solid white !important;
+}
+
+
+
+
+
+/*CELL PALLETE*/
+
+.picker_selected{
+	transition: 0.1s ease-in;
+    color: #231f20 !important;
+    background-color: #0CB7F7 !important;
+    text-shadow: 0px 0px 0px black; 
+}
+
+.picker_deselect{
+    background: #e4e4e4;
+    color: black;
+}
+
+.picker_deselect:hover {
+    color: #0CB7F7;    
+}
+
+.picker_restricted {
+    background: white;
+    color: #54575a;	
+}
+
+.picker_limited 
+{
+    background: white;
+    color: #b9baba;    
+}
+
+
+.picker-icon {
+    color: #0CB7F7;
+    position: relative;
+/*    left: .5em;*/
+    font-size: 1.6em;
+    line-height: 1.6em;
+}    
+          
+
+
+
+.fade-in { 	
+	color: #000000;
+}
+
+.fade-out {
+	color: #FFFFFF;
+}
+
+.datepickerframe {
+    width: auto !important;
+    margin-right: 1.5em;
+}
+
+.picker-dwraper {
+    width: 180px;
+} 
+
+.picker-form {
+	display: inline;
+}
+
+/*
+.picker-calendar-closed {
+	padding: 5px 10px 6px 10px;
+	text-align: center;
+	border-bottom: solid 2px #c9c9c9;
+  	margin: 0 auto;
+  	display: inline;
+	width:  33;
+	height: 33;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 1px 1px 1px #666666;
+
+	--deselect-light : #e6e6e6;
+	--deselect-dark: #999999;
+	background: var(--deselect-light);
+    background: -moz-linear-gradient(top,  var(--deselect-light) 0%, var(--deselect-dark) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,var(--deselect-light)), color-stop(100%,#aee850));
+    background: -webkit-linear-gradient(top,  var(--deselect-light) 0%, var(--deselect-dark) 100%);
+    background: -o-linear-gradient(top,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    background: -ms-linear-gradient(top,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    background: linear-gradient(to bottom,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54bc3e', endColorstr='#aee850',GradientType=0 );
+}
+
+.picker-calendar-opened {
+	padding: 5px 10px 6px 10px;
+	text-align: center;
+	border-bottom: solid 2px #c9c9c9;
+  	margin: 0 auto;
+  	display: inline;
+	width:  33;
+	height: 33;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 1px 1px 1px #666666;
+	--deselect-light : #999999;
+	--deselect-dark: #e6e6e6;
+	background: var(--deselect-light);
+    background: -moz-linear-gradient(top,  var(--deselect-light) 0%, var(--deselect-dark) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,var(--deselect-light)), color-stop(100%,#aee850));
+    background: -webkit-linear-gradient(top,  var(--deselect-light) 0%, var(--deselect-dark) 100%);
+    background: -o-linear-gradient(top,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    background: -ms-linear-gradient(top,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    background: linear-gradient(to bottom,  var(--deselect-light) 0%,var(--deselect-dark) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54bc3e', endColorstr='#aee850',GradientType=0 );
+}
+*/
+
+.ng-hide-add, .ng-hide-remove {
+    display: block !important; /* yes, important */
+}
+
+.picker-animate {
+  line-height: 20px;
+  opacity: 1;
+  padding: 4px;
+  background: transparent !important;
+}
+
+.picker-animate.ng-hide-add, .picker-animate.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.picker-animate.ng-hide {  
+  opacity: 0;
+}
+
+
+.picker-element {
+  background: transparent;
+  color: red;
+  padding: 3px;
+  text-shadow: 0px 0px 1px gray;
+}
+
+.picker_error_wrapper {
+	background: transparent;
+    padding: 5px 5px !important;
+	min-height: 26px;	
+}
+
+
+
+.picker_table_alignment {
+	border: 1px solid black;
+	margin: 0 auto;
+
+}
+
+.picker_table-closed {
+	max-height: 0;
+    transition: max-height 0.6s ease-out;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.picker_table-showed {
+	max-height: 500px !important;
+	overflow: hidden;
+	transition: max-height 0.6s ease-in !important;
+}

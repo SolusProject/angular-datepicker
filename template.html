@@ -1,0 +1,106 @@
+<div class="datepickerframe picker_table-showed" >
+	<div style="text-align: center !important;" >
+		<div class="picker-dwraper">
+        <div  autocomplete="off" class="picker-form" ng-attr-id="{{id_}}">
+			<form autocomplete="off">
+            <!-- ng-class="{'fade-in' : bool1, 'fade-out' : !bool1}" -->
+			<input 	TYPE="text"
+					ng-attr-id="{{first_box.id}}"
+					name="one"
+					class="picker-input"
+					ng-model="first_box.value"
+					size="{{first_box.length}}"
+					ng-change="check1()"
+					ng-keydown="down1($event)"
+					ng-keyup="up1($event)"
+					maxlength="{{first_box.length}}"
+					ng-keypress="press1($event)"
+					placeholder="{{first_box.format.toUpperCase()}}"
+					ng-blur="picker_blur($event, first_box)"
+				   	ng-focus="picker_focus($event, first_box)"
+                   > <span class="picker-span">{{splitter1}}</span>
+			<!-- ng-class="{'fade-out' : !bool2, 'fade-in' : bool2}" -->
+			<input 	TYPE="text"
+			   	ng-attr-id="{{second_box.id}}"
+			   	name="two"
+			   	class="picker-input"
+			   	ng-model="second_box.value"
+			   	size="{{second_box.length}}"
+			   	ng-valid="second_box.validated"
+			   	ng-change="check2()"
+			   	ng-keyup="up2($event)"
+			   	ng-keydown="down2($event)"
+			   	maxlength="{{second_box.length}}"
+			   	ng-keypress="press2($event)"
+			   	placeholder="{{second_box.format.toUpperCase()}}"
+			   	ng-blur="picker_blur($event, second_box)"
+			   	ng-focus="picker_focus($event, second_box)"
+			   	class="second_box.value fadein fadeout"
+                   ><span class="picker-span"> {{splitter2}}</span>
+			<!-- ng-class="{'fade-in' : bool3, 'fade-out' : !bool3}" -->
+			<input 	TYPE="text"
+					ng-attr-id="{{third_box.id}}"
+					name="three"
+					class="picker-input"
+
+					ng-model="third_box.value"
+					size="{{third_box.length}}"
+					ng-change="check3()"
+					ng-keydown="down3($event)"
+					maxlength="{{third_box.length}}"
+					ng-keypress="press3($event)"
+					placeholder="{{third_box.format.toUpperCase()}}" >
+        </form>
+
+            <span ng-click="calendarOpened = !calendarOpened" class="icon icon-calendar picker-icon"></span>
+
+
+        </div>
+
+
+		<div class="picker_error_wrapper">
+			<div
+                 ng-show="errorShow = (error_message != undefined || maxdateAlertMessage || mindateAlertMessage || restrictedMessage)" class="picker-element picker-animate">
+				<span class="picker-span-ok" ng-show="!maxdateAlertMessage && !mindateAlertMessage">{{error_message}} </span>
+				<span class="picker-span-ok" ng-show="maxdateAlertMessage" >Max date is {{default_max_offset_date | date : "MM/dd/yyyy"}}</span>
+				<span class="picker-span-ok" ng-show="mindateAlertMessage">Min date is {{default_min_offset_date | date : "MM/dd/yyyy"}}</span>
+				<span class="picker-span-ok" ng-show="restrictedMessage">{{error_message_}}</span>
+			</div>
+		</div>
+
+        </div>
+	</div>
+
+	<div ng-show="calendarOpened" ng-class="{'picker_table-showed' : calendarOpened, 'picker_table-closed': !calendarOpened }">
+        <table class="picker-table">
+			<tr class="picker-header1" >
+				<th class="picker-main-header"><button type="button" ng-click="previous()" class="picker-button" ><span class="glyphicon glyphicon-chevron-left"></span></button></button></th>
+				<th colspan="5" class="picker-center-header" >
+					<select ng-model="_month" class="picker-select"  ng-options="full_month.indexOf(o) as o for o in full_month" ng-change="render()" ></select>
+					<select ng-model="_year" class="picker-select" ng-options="a as a for a in year_list"
+					ng-change="render_year()"></select>
+				</th>
+				<th class="picker-main-header"><button type="button" class="picker-button" ng-click="next()"><span class="glyphicon glyphicon-chevron-right"></span></button></th>
+			</tr>
+			<tr>
+				<th ng-repeat="day in short_weekday" class="picker-header">{{day}}</th>
+			</tr>
+			<tr ng-repeat="row in table track by $index" ng-init="row_id=$index" style="cursor: pointer;">
+				<td class="picker-td" align="center"
+					ng-repeat="column in row track by $index"
+					ng-class="{'picker_restricted': (column.status === status.restricted_previous ||
+											  column.status === status.restricted_after),
+							   'picker_selected'  : (column.status === status.selected),
+							   'picker_limited'   : (column.status === status.limited_by_min ||
+							   				  column.status === status.limited_by_max),
+							   	'picker_deselect' : (column.status === undefined || column.status === status.deselected)
+							   }"
+					ng-click="action(row_id, $index, column)"
+					>
+					{{column.value}}
+				</td>
+			</tr>
+		</table>
+	<div>
+</div>
+
