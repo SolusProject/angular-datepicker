@@ -550,7 +550,7 @@
 
 
 
-            date     = scope.toUTC(date);
+            // date     = scope.toUTC(date);
 
             date.setHours(0, 0, 0, 0);
 
@@ -562,19 +562,25 @@
 
             //  scope.local_ngModel = date;
 
-             console.log(scope.date_validation(date));
+             //console.log(scope.date_validation(date));
 
              if (scope.date_validation(date)) {
 
+                 console.log("should be rendered");
+                 scope.ngModel       = date;
 
+                 console.log(date);
                 scope.default_month = scope.full_month[scope.local_ngModel.getMonth()];
                 scope._year         = scope.local_ngModel.getFullYear();
                 scope._month        = scope.ngModel.getMonth();
                 scope.local_ngModel = date;
                 console.log("changed");
+
+
                 scope.ngModel       = date;
                 scope.build(scope.days_in_month(scope.local_ngModel.getMonth()-1,
                                                 scope.local_ngModel.getFullYear()));
+                scope.dont_triger_the_watcher = true;
 
             }
 
@@ -1195,16 +1201,16 @@
         };
 
 
-        scope.$watch("local_ngModel", function(n,o) {
-
-            console.log(n);
-
-
-            // if(n) {
-            //     //console.log(n);
-            //     console.log("something is happening");
-            // }
-        });
+        // scope.$watch("local_ngModel", function(n,o) {
+        //
+        //     console.log(n);
+        //
+        //
+        //     // if(n) {
+        //     //     //console.log(n);
+        //     //     console.log("something is happening");
+        //     // }
+        // });
 
 
 
@@ -1214,7 +1220,7 @@
         scope.$watch("ngModel", function (n, o) {
             if (n) {
 
-                console.log("happening");
+                // console.log("happening");
                 //return;
 
 
@@ -1227,6 +1233,10 @@
                     scope.$watch('calendarOpened', function (n, o) {
                         if (n == true) {
                             scope.ngSet = true;
+
+
+                            console.log("should be in here");
+
 
                             scope.parseDate(scope.local_ngModel);
                             scope._month        = scope.ngModel.getMonth();
@@ -1246,6 +1256,17 @@
                         }
                     });
                 } else {
+
+                    if(scope.dont_triger_the_watcher)
+                    {
+                        scope.dont_triger_the_watcher = false;
+                        return;
+                    }
+
+                    //return;
+
+                    console.log("or here");
+
                     if (scope.ngModel && scope.ngModel instanceof Date) {
                         scope.ngModel.setHours(0, 0, 0, 0);
 
@@ -1287,7 +1308,7 @@
             },
             require     : 'ngModel',
             restrict    : 'E',
-            templateUrl : '/Modules/AlveoDatepicker/template.html',
+            templateUrl : 'template.html',
             transclude  : true,
             link        : function (s) {
 
@@ -1302,7 +1323,7 @@
         };
     }
 
-    angular.module("alveo.modules.datepicker", ["ngAnimate"])
+    angular.module("datepicker", ["ngAnimate"])
         .controller("AlveoPickerController", controllerDependencies)
         .directive("alveoPicker", directive);
 
